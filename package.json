@@ -22,7 +22,6 @@
   },
   "scripts": {
     "build": "webpack",
-    "start": "webpack.server.js"
   },
   "author": "",
   "license": "ISC"
