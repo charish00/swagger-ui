@@ -1,9 +1,11 @@
+#!/usr/bin/env node
+
+const argv = require('yargs').argv
 const path = require('path');
 const Url = require('url-parse');
 const express = require('express');
 const axios = require('axios');
 const proxy = require('http-proxy-middleware');
-const argv = require('yargs').argv
 
 console.log('argv is: ' + JSON.stringify(argv));
 
@@ -26,7 +28,7 @@ axios.get(swagger_url).then(res => {
 })
 
 app.use('/swagger-ui/env.js', (req, res) => res.send('(function(){window.swagger_api_docs="'+surl.pathname+surl.query+'"})()'));
-app.use('/swagger-ui', express.static(path.join(__dirname, 'dist')));
+app.use('/swagger-ui', express.static(path.join(__dirname, 'frontend')));
 app.use(surl.pathname, (req, res) => res.send(swagger_content));
 app.use('/', proxy({ 
     target: purl.origin, 
