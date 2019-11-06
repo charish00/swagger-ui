@@ -1,13 +1,17 @@
 #!/usr/bin/env node
+<<<<<<< HEAD
 // swaggerproxy
 // node server.js --swagger_url https://llsams.qhhrly.cn/v2/api-docs --proxy_url https://llsams.qhhrly.cn --sso_url https://lls-sso.qhhrly.cn --username wby --password 1
 
+=======
+
+const argv = require('yargs').argv
+>>>>>>> 44f60f3733c24b5eb2190f8a0edaf3476835b45a
 const path = require('path');
 const Url = require('url-parse');
 const express = require('express');
 const axios = require('axios');
 const proxy = require('http-proxy-middleware');
-const argv = require('yargs').argv
 
 console.log('argv is: ' + JSON.stringify(argv));
 

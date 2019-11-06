@@ -30,8 +30,8 @@ module.exports = {
 	entry: './src/index.js',
 
 	output: {
-		filename: '[name].[chunkhash].js',
-		path: path.resolve(__dirname, 'dist')
+		filename: '[name].js',
+		path: path.resolve(__dirname, 'frontend')
 	},
 
 	plugins: [/** new webpack.ProgressPlugin(),*/ new HtmlWebpackPlugin({
