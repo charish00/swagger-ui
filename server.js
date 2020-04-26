@@ -27,6 +27,18 @@ if (!proxy_url) {
 const surl = new Url(swagger_url);
 const purl = new Url(proxy_url);
 
+const instance = axios.create({
+  httpsAgent: new https.Agent({  
+    rejectUnauthorized: false
+  })
+});
+instance.get('https://something.com/foo');
+
+// At request level
+const agent = new https.Agent({  
+  rejectUnauthorized: false
+});
+
 axios.get(swagger_url).then(res => {
     let swagger_content = res.data;
     swagger_content.host = 'localhost:' + listen_to;
@@ -59,4 +71,4 @@ axios.get(swagger_url).then(res => {
     opn(swaggerView, { app: 'chrome' }).then(() => {
         console.log(swaggerView);
     });
-})
+}, { httpsAgent: agent })
